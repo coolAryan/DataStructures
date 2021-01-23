@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+     
+        StringBuilder A=new StringBuilder();
+        Scanner sc=new Scanner(System.in);
+         A=A.append(sc.next());
+        // System.out.println(A);
+        sc.close();
+         StringBuilder B=new StringBuilder(A);
+         StringBuilder C=new StringBuilder();
+            
+           // System.out.println(B);
+            B=B.reverse();
+            //System.out.println(B);
+        if((A.toString()).equals(B.toString()))
+        {
+            System.out.println("Yes");
+        }
+       else  {
+            System.out.println("No");
+        }
+        /*\ Enter your code here. Print output to STDOUT. */
+        
+    }
+}
+
+
+

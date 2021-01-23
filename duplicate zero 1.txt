@@ -1,0 +1,32 @@
+class Solution {
+    public void duplicateZeros(int[] a) {
+        int n=a.length;
+      //  int[] a=new int[n];
+        int[] b=new int[n];
+        int j=0;
+        for(int i=0;i<n;i++)
+        {
+            if (j < n)
+            {
+                if (a[i] == 0)
+                {
+                    b[j++] = 0;
+                    if (j < n)
+                    {
+                        b[j++] = 0;
+                    }
+                } 
+                else 
+                {
+                    b[j++] = a[i];
+                }
+            }
+                    }
+        for( j=0;j<n;j++)
+        {
+           a[j]=b[j];
+            //System.out.print(b[j]+" ");
+        }    
+    }
+}
+  

@@ -1,0 +1,27 @@
+ public void deleteAlternate (Node head){
+        //Write your code here
+        if(head==null || head.next==null)
+        {
+            System.out.print(" "+head.data);
+        }
+        else{
+        Node curr=head;
+        int count=0;
+        while(curr!=null )
+        {
+           if(count%2==0)
+           {
+               System.out.print(curr.data+" ");
+           }
+           else{
+               Node temp=curr;
+             //  System.out.print(temp.data+" ");
+               temp=null;
+              // System.out.print(temp+" ");
+           }
+           count++;
+           curr=curr.next;
+        }
+        }
+       
+    }

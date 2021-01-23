@@ -1,0 +1,73 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    void merge(int a[],int s,int m,int l ){
+        int n1=m-s+1;
+        int n2=l-m;
+        int []L=new int[n1];
+        int []M=new int[n2];
+        for(int i=0;i<n1;i++)
+        {
+            L[i]=a[s+i];
+        }
+        for(int i=0;i<n2;i++)
+        {
+            M[i]=a[m+1+i];
+        }
+        int i=0;
+        int j=0;
+        int k=s;
+        while(i<n1 &&j<n2)
+        {
+            if(L[i]>=M[j])
+            {
+                a[k]=M[j];
+                j++;
+                k++;
+            }
+            else{
+                a[k]=L[i];
+                i++;
+                k++;
+            }
+        }
+        while(i<n1)
+        {
+            a[k]=L[i];
+            i++;
+            k++;
+            
+        }
+        while(j<n2)
+        {
+            a[k]=M[j];
+            j++;
+            k++;
+        }
+    }
+    void sort(int a[],int s,int l){
+        
+        if(s<l){
+            int m=(s+l)/2;
+             
+            sort(a,s,m);
+            
+            sort(a,m+1,l);
+            merge(a,s,m,l);
+            
+        }
+        
+    }
+    static void print(int a[]){
+        int n=a.length;
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(" "+a[i]);
+        }
+    }
+    public static void main(String[] args) {
+        int[] a={6,5,12,10,9,1};
+        Main obj=new Main();
+        obj.sort(a,0,a.length-1);
+        print(a);
+    }
+}

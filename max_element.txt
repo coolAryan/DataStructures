@@ -1,0 +1,54 @@
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        Stack<Integer> st=new Stack<Integer>();
+        Stack<Integer> temp=new Stack<Integer>();
+        int t=0;
+        int v=0;
+        int max=1;
+        for(int i=0;i<n;i++)
+        {
+            t=s.nextInt(); 
+            // System.out.print("\n"+i+"="+t+" ");
+            // System.out.print(" \n");
+            if(t==1)
+            { 
+                
+              v=s.nextInt();
+               max=Math.max(max,v);
+              temp.push(max);
+              st.push(v);
+              //System.out.print(st.peek()+" ");
+            }
+            if(t==2)
+            {
+                int a=st.peek();
+                
+                if(!st.empty())
+                {
+                    st.pop();
+                    if(temp.peek()==a)
+                    {
+                        temp.pop();
+                    }   
+                }   
+                if(!temp.empty()) 
+                {
+                    max=temp.peek();
+                }
+                if(temp.empty())
+                {
+                    max=1;
+                }
+                
+            }
+            if(t==3)
+            {
+                System.out.println(temp.peek()+" ");
+            }
+        }
+    }
+}

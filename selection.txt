@@ -1,0 +1,36 @@
+// "static void main" must be defined in a public class.
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        int t,min=0;
+        int j=0;
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+         int[]a=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i]=s.nextInt();
+        }
+        s.close();
+        for(int i=0;i<n-1;i++)
+        {
+            min=i;
+         for( j=i+1;j<n;j++)
+        {
+             
+            if(a[min]>a[j])
+            {
+                min=j;
+            }
+        }
+            t=a[min];
+            a[min]=a[i];
+            a[i]=t;
+        
+        }
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+}
