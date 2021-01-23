@@ -1,0 +1,115 @@
+class Heaap{
+    int a[];
+    int last;
+    int cap;
+    Heaap(int size)
+    {
+        a=new int[size];
+        cap=size;
+        last=-1;
+    }
+    boolean isfull()
+    {
+        if(last+1==cap)
+        {
+            return true;
+        }
+        return false;
+    }
+    void swapp(int a[],int x,int y)
+    {
+        int temp;
+     
+        temp= a[x];
+        a[x]=a[y];
+        a[y]=temp;
+    }
+    void upHeapify(int ind)
+    {
+       int parent= (ind-1)/2;
+        if(parent>=0 && a[parent]<a[ind])
+        {
+            swapp(a,parent,ind);
+            upHeapify(parent);
+        }
+        
+    }
+    void add(int data)
+    {
+        if(isfull())
+        {
+            System.out.println("cannot add");
+            return;
+        }
+        a[++last]=data;
+        upHeapify(last);
+    }
+    boolean isempty()
+    {
+        if(last==-1)
+        {
+            return true;
+        }
+        return false;
+    }
+    void downHeapify(int k)
+    {
+        int large=k;
+        int left=(k*2)+1;
+        int right=(k*2)+2;
+        if(left<=last && a[left]>a[large])
+        {
+         large=left;   
+        }
+        if(right<=last && a[right]>a[large])
+        {
+            large=right;
+        }
+        if(large!=k)
+        {
+            swapp(a,large,k);
+        downHeapify(large);    
+        }
+        
+    }
+    void remove()
+    {
+        if(isempty())
+        {
+            System.out.print("Nothing to delete");
+            return;
+        }
+        swapp(a,0,last);
+        last--;
+        downHeapify(0);
+    }
+    void print()
+    {
+        for(int i=0;i<=last;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+    public static void main(String[] args)
+    {
+     Heaap h=new Heaap(5);
+        h.add(10);
+       // h.remove();
+        h.add(48);
+        h.add(12);
+        h.add(16);
+        h.add(56);
+        h.add(85);
+        h.add(96);
+        h.add(5);
+        h.remove();
+        h.remove();
+        h.remove();
+        h.remove();
+        h.remove();
+        h.remove();
+              // h.add(56);
+
+        h.print();
+    }
+}

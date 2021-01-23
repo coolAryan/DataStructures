@@ -1,0 +1,90 @@
+class Insert{
+
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+        
+    }
+ 
+     Node addfront(Node head,int data)
+     {
+         Node n=new Node(data);
+         
+         if(head==null)
+         {
+             n.next=n;
+           n.prev=n;
+             return n;
+         }
+         n.next=head;
+         n.prev=head.prev;
+                  n.prev.next=n;
+
+         head.prev=n;
+         return n;
+        
+         //head=n;
+         //return head;
+         
+     }
+     Node addlast(Node head,int data)
+     {
+       Node n=new Node(data);  
+         if(head==null)
+         {
+             n.next=n;
+           n.prev=n;
+          return n;
+         }
+         n.next=head;
+         head.prev.next=n;
+         n.prev=head.prev;
+         head.prev=n;
+         return head;
+         //head=n;
+         //return head;
+     }
+   
+    public void print(Node head)
+    {
+        Node curr=head;
+    if(head!=null)
+    {
+        do{
+            System.out.print(curr.data+" ");
+            curr=curr.next;
+        }
+        while(curr!=head);
+    }
+        
+       
+        
+    }
+        public static void main(String[] args)
+        {
+            Insert s=new Insert();
+            Node head=null;
+            head=s.addfront(head,2);
+            head=s.addfront(head,4);
+            // head=s.addlast(head,7);
+            // head=s.addlast(head,6);
+             head=s.addfront(head,6);
+            head=s.addfront(head,8);
+            head=s.addfront(head,10);
+            //head=s.addfront(head,12);
+            // head=s.addlast(head,13);
+            // head=s.addatpos(head,2,9);
+            // head=s.addatpos(head,0,7);
+            //head=s.deletefront(head);
+            //head=s.deletelast(head);
+              //head=s.deleteatpos(head,5);
+            s.print(head);
+        }
+    }

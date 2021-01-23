@@ -1,0 +1,77 @@
+class Insert{
+
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+        
+    }
+    Node phead=null;
+     Node addfront(Node head,int data)
+     {
+         Node n=new Node(data);
+         
+         if(head==null)
+         {
+             n.next=n;
+             phead=n;
+             return n;
+         }
+         n.next=head;
+        phead.next=n;
+         //head=n;
+         //return head;
+         return n;
+     }
+     Node addlast(Node head,int data)
+     {
+         Node n=new Node(data);
+         
+         if(head==null)
+         {
+             n.next=n;
+             phead=n;
+             return n;
+         }
+         phead.next=n;
+         n.next=head;
+         phead=n;
+         return head;
+         
+         
+     }
+   
+    public void print(Node head)
+    {
+        Node curr=head;
+    if(head!=null)
+    {
+        do{
+            System.out.print(curr.data+" ");
+            curr=curr.next;
+        }
+        while(curr!=head);
+    }
+        
+       
+        
+    }
+        public static void main(String[] args)
+        {
+            Insert s=new Insert();
+            Node head=null;
+            head=s.addfront(head,2);
+            head=s.addfront(head,4);
+            head=s.addlast(head,7);
+           head=s.addfront(head,8);
+            // head=s.addfront(head,4);
+            // head=s.addlast(head,7);
+            s.print(head);
+       }
+    }

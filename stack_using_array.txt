@@ -1,0 +1,73 @@
+class Stac{
+    
+    int capacity;
+    int[] arr;
+    int top;
+    Stac(int size)
+    {
+     arr=new int[size];
+        capacity=size;
+        top=-1;
+    }
+    
+    void push(int val)
+    {
+        if(isFull())
+        {
+            System.out.print("array is full\n");
+            return;
+        }
+        arr[++top]=val;
+    }
+    boolean isFull()
+    {
+        if(capacity==top-1)
+        {
+            return true;
+        }
+        return false;
+    }
+    void pop()
+    {
+        if(isEmpty())
+        {
+            System.out.print("Nothing to delete");
+            return;
+        }
+        top--;
+        
+    }
+    boolean isEmpty()
+    {
+        
+        if(top==-1)
+        {
+            return true;
+        }
+        return false;
+    }
+   int front()
+    {
+        //Stac<Integer> a=new Stac<Integer>();
+        if(isEmpty())
+        { 
+          System.out.print("Nothing in the stack");  
+           return -1;
+        }
+        return arr[top];
+    }
+    public static void main(String args[])
+    {
+     Stac s=new Stac(5);
+        System.out.print(" "+s.isEmpty());
+        s.push(10);
+        s.push(20);
+        s.push(21);
+         System.out.print(" "+s.isEmpty());
+        s.pop();
+        s.pop();
+        s.pop();
+        System.out.print(" "+s.front());
+        
+    }
+}

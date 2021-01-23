@@ -1,0 +1,115 @@
+class LinkeList{
+    int data;
+    int pri;
+    LinkeList next;
+    LinkeList(int data,int pri)
+    {
+        this.next=null;
+        this.data=data;
+        this.pri=pri;
+    }
+}
+class Queu{
+    LinkeList front;
+    LinkeList rear;
+    Queu()
+    {
+        this.rear=null;
+        this.front=null;
+    }
+    void enQueue(int data,int pri)
+    {
+        LinkeList n=new LinkeList(data,pri);
+        if(front==null)
+        {
+            rear=n;
+            front=n;
+            return;
+        }
+        rear.next=n;
+        rear=n;
+    }
+   
+    void deQueue()
+    {
+        if(front==null)
+        {
+            System.out.println("nothing to delete");
+            return;
+        }
+        LinkeList temp=front;
+        LinkeList maxp=front;
+        while(temp!=null)
+        {
+            if(maxp.pri<temp.pri)
+            {
+                maxp=temp;
+            }
+            temp=temp.next;
+        }
+        if(front.next==null)
+        {
+            //System.out.println("All elements deleted");
+            front=null;
+            rear=null;
+            return;
+        }
+        if(maxp==front)
+        {
+            front=front.next;
+            maxp=null;
+                return;
+        }
+        temp=front;
+        while(temp.next!=maxp)
+        {
+            temp=temp.next;
+        }
+        if(maxp==rear)
+        {
+            rear=temp;
+        }
+        temp.next=maxp.next;
+        maxp=null;
+        
+       
+    }
+     
+    void print()
+    {
+        if(rear==null)
+        {
+           System.out.print("nothing");
+            return;
+        }
+        LinkeList s=front;
+        while(s!=null)
+        {
+            System.out.println("Data= "+s.data+" "+"priority= "+s.pri);
+           s= s.next;
+        }
+    }
+    
+        
+    public static void main(String[]args)
+    {
+        Queu q=new Queu();
+        q.enQueue(1,10);
+    
+     q.enQueue(2,20);
+ 
+         q.deQueue();
+        
+            q.enQueue(3,30);
+        
+        q.enQueue(4,0);
+        q.enQueue(5,12);
+  // q.deQueue();
+  //   q.deQueue();
+        // q.deQueue();
+        // q.deQueue();
+        //         q.deQueue();
+
+        q.print();
+    }
+}

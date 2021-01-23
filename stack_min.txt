@@ -1,0 +1,84 @@
+static void add(Stack<Integer> a,Stack<Integer>m,int data)
+    {  
+         if(m.empty())
+         {
+             m.push(data);
+             a.push(data);
+             
+         }     
+        int z=a.peek();
+        if(z>data)
+        {
+            m.push(data);
+            a.push(data);
+            
+        }
+        if(z<data){
+            m.push(data);
+            a.push(z);
+        }
+    } 
+
+
+
+static void remove(Stack<Integer> a,Stack<Integer> m)
+    {
+        if(m.empty())
+        {
+            System.out.print("nothing to delete");
+            return;
+        }
+        m.pop();
+        a.pop();
+    }
+    
+
+
+
+
+
+
+static void print(Stack<Integer> a,Stack<Integer>m)
+    {
+        
+        
+        System.out.print("auxillary array:\n");
+        while(!a.empty())
+        {
+            System.out.print(a.peek()+" ");
+            a.pop();
+        }
+         System.out.print("\n ");
+        System.out.print("main array:\n");
+        while(!m.empty())
+        {
+            System.out.print(m.peek()+" ");
+            m.pop();
+        }
+       
+        
+    }
+
+ 
+static int getMin(Stack<Integer> a){
+    if(a.empty())
+    {
+        return -1;
+    }
+     
+     return a.peek();
+    }
+ public static void main(String [] args)
+    {
+        
+        
+        Stack<Integer> h=new Stack<Integer>();
+        Stack<Integer> m=new Stack<Integer>();
+      //   add(a,m,10);
+      //   add(a,m,20);
+      // add(a,m,30);
+      //   add(a,m,22);
+      // remove(a,m);
+        
+// System.out.print(  getMin(a));
+//      print(a,m);

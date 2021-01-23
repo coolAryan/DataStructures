@@ -1,0 +1,61 @@
+public class Solution {
+
+    /*
+     * Complete the downToZero function below.
+     */
+     static boolean isPrime(int n)
+     {
+        int p=n;
+        boolean prime=true;
+             for(int k=2;k<p;k++)
+             {
+                 if(p%k==0)
+                 {
+                     prime=false;
+                     
+                    return prime;
+                 }
+             }
+           return prime;
+     }
+    static int downToZero(int n) {
+         int a,b;
+         int c=0;
+         while(n!=0)
+         {
+         int i=2;
+         for(i=2;i<n;i++)
+         {
+             if(n%i==0)
+             {
+              a=i;
+              b=n/i;
+              if(a==1 || b==1)
+              {
+                  n=n*i;
+                  break;
+              }
+              n=Math.max(a,b);
+              c++;
+             i=1;
+             }
+             else{
+                 n=n-1;
+                 c++;
+                 i=1;
+             }
+         }
+         if(isPrime(n)==true)
+         {
+             n=n-1;
+             c++;
+         }
+         if(n==1)
+         {
+             n=n-1;
+             c++;
+         }
+    }
+    return c;
+    }
+

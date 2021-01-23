@@ -1,0 +1,178 @@
+class Insert{
+    
+    class Node{
+        int data;
+        Node next;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    Node head;
+     void middleNode() {
+        Node curr=head;
+        int length=0;
+        while(curr!=null)
+        {
+            curr=curr.next;
+            length++;
+        }
+        curr=head;
+        for(int i=1;i<length/2;i++)
+        {
+            curr=curr.next;
+        }
+        curr=curr.next;
+        System.out.print(curr.data+" ");
+        //return head;
+    }
+        public Node addstart(int data)
+        {
+            Node n=new Node(data);
+            if(head==null)
+            {
+            head=n;
+            }
+            else{
+                n.next=head;
+                head=n;
+              //  head.next=temp;
+                
+            }
+            return head;
+        }
+    
+    public void addlast(int data)
+    {
+         Node n=new Node(data);
+        n.next=null;
+            if(head==null)
+            {
+            head=n;
+            }
+        Node curr=head;
+        while(curr.next!=null)
+        {
+            curr=curr.next;
+        }
+        curr.next=n;
+    }
+    public void traverse()
+    {
+        Node curr=head;
+        int length=0;
+        while(curr!=null)
+        {
+            System.out.print(curr.data+" ");
+            curr=curr.next;
+            length++;
+        }
+        System.out.println(" "+length);
+    }
+    public void addatpos(int pos,int data)
+    {
+        Node n=new Node(data);
+        Node curr=head;
+        if(pos==0)
+        {
+            curr=head;
+            head=n;
+            head.next=curr;
+        }
+        else{
+            
+       for(int i=1;i<pos;i++)
+       {
+           curr=curr.next;
+       }
+        n.next=curr.next;
+        curr.next=n;
+        }
+    }
+    Node reverse( ){
+        
+        if(head==null||head.next==null)
+        {
+            return  head;
+        }
+        Node rev=null;
+       // Node curr=head;
+        while(head!=null)
+        {
+           Node temp=head;
+            head=head.next; 
+            temp.next=rev;
+            rev=temp;
+        }
+        head=rev;
+       return rev;
+    }
+    void deletefront()
+    {
+        Node curr=head;
+        head=curr.next;
+       /* while(curr!=null)
+        {
+            
+            curr=curr.next;
+        }*/
+    }
+      void deletelast()
+    {
+        Node curr=head;
+          while(curr.next.next!=null)
+          {
+            curr=curr.next;
+         }
+      
+          Node temp=curr.next;
+          curr.next=null;
+          temp=null;
+          }
+    void deletemid(int pos)
+    {
+        Node curr=head;
+        if(pos==0)
+        {
+            Node temp=head;
+            head=head.next;
+                temp=null;
+        }
+        else{
+        for(int i=1;i<pos;i++)
+        {
+            curr=curr.next;
+        }
+        Node temp=curr.next;
+        curr.next=temp.next;
+    }
+    }
+    public void print()
+    {
+     Node curr=head;
+        while(curr!=null)
+        {
+            System.out.print(" "+curr.data);
+            curr=curr.next;
+        }
+    }
+     public static void main(String[] args) {    
+         Insert s=new Insert();
+       
+        s.addstart(18);
+          s.addstart(5);
+          s.addstart(16);
+          s.addstart(18);
+         s.addstart(8);
+          s.addstart(12);
+          s.addstart(11);
+          s.revrse();
+         // s.deletefront();
+         //s.deletelast();
+         //s.deletemid(7);
+         //s.deletemid(0);
+        s.print();
+     }
+        
+    }

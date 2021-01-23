@@ -1,0 +1,65 @@
+class Test{
+ static void print(Stack<Integer> s)
+       {
+        while(!s.empty())
+        {
+            System.out.print(s.peek()+" ");
+            s.pop();
+        }
+       }
+ static String rev(String st)
+    {
+        Stack<Character> p=new Stack<Character>();
+       
+        for(int i=0;i<st.length();i++)
+        {
+            p.push(st.charAt(i));
+        }
+          char [] ch=new char[st.length()];
+         for(int i=0;i<st.length();i++)
+        {
+          
+           
+            ch[i]= p.pop();
+       }
+        st=Arrays.toString(ch);
+        return st;
+        
+    }
+    public static void main(String [] args)
+    {
+            Stack<Integer> s=new Stack<Integer>();
+    
+     s.push(10);
+     s.push(20);
+  s.push(30);
+   //     print(s);
+        String  st="Hello";
+        //String a=rev(st);
+        //System.out.print(a+" ");
+        Stack<Stack<Integer>> x=new Stack<Stack<Integer>>();
+        Stack<Integer> d=new Stack<Integer>();
+        x.push(d);
+        d.push(20);
+        d.push(30);
+        
+        Stack<Integer> f=new Stack<Integer>();
+        x.push(f);
+        f.push(50);
+        f.push(80);
+        f.push(90);
+        while(!x.empty())
+        {
+         Stack<Integer>z=x.peek();
+            while(!z.empty())
+            {
+           //     System.out.print(z.peek()+" ");
+                z.pop();
+            }
+            x.pop();
+         //   System.out.print("\n");
+        }
+        
+        
+}    
+}

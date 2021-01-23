@@ -1,0 +1,65 @@
+class Test{
+    static void add1(Stack<Integer>h,int min,int val)
+    {
+        if(h.empty())
+        {
+            h.push(val);
+            min=val;
+            return;
+        }
+        if(min<=val)
+        {
+            h.push(val);
+            
+            return;
+        }
+        h.push(2*val-min);
+        min=val;
+        return;
+    }
+    static int top(Stack<Integer>h,int min)
+    {
+        if(h.empty())
+        {
+            return -1;
+        }
+        int a=h.peek();
+        if(a<=min)
+        {
+            return a;
+        }
+        return min ;
+    }
+    static void remove1(Stack<Integer>h,int min)
+    {
+        if(h.empty())
+        {
+            System.out.print("nothing to delete");
+            return;
+        }
+        int z=h.peek();
+        if(z>=min)
+        {
+            h.pop();
+            return;
+        }
+        h.pop();
+        min=2*min-z;
+    }
+  
+   
+ public static void main(String [] args)
+    {
+         Stack<Integer> h=new Stack<Integer>();
+        //Stack<Integer> m=new Stack<Integer>();
+     int min=10;
+     add1(h, min,10);
+    add1(h, min,20);
+    add1(h, min,30);
+    add1(h,min,5);
+    add1(h,min,1);
+   // remove1(h,min);
+    System.out.print(top(h,min));
+}    
+}   
+      

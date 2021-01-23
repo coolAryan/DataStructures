@@ -1,0 +1,28 @@
+// "static void main" must be defined in a public class.
+//import java.util.Queue; 
+class Quee{
+    static void print(Queue q)
+    {
+        while(!q.isEmpty())
+        {
+            System.out.print(q.peek()+" ");
+            q.remove();
+        }
+    }
+    public static void main(String[] args)
+    {
+        Queue<Integer> q=new LinkedList<>();
+         q.add(2);
+         q.remove();
+         q.add(3);
+         q.add(4);
+         q.add(5);
+         q.add(9);
+         q.add(8);
+         q.remove();
+         int a=q.size();
+         System.out.println(a);
+         print(q);
+    // System.out.print(q.peek());
+    }
+}

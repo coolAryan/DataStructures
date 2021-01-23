@@ -1,0 +1,107 @@
+class Node{
+    int data;
+    Node right;
+    Node left;
+    Node parent;
+    Node(int data){
+        this.data=data;
+        this.right=null;
+        this.left=null;
+        this.parent=null;
+    }    
+}
+class Heap{
+    int x,y;
+    Node root;
+    Node t;
+    Heap(){
+        this.root=null;
+    }
+    void add(int data)
+    {
+        Node n=new Node(data);
+        if(root==null)
+        {
+            root=n;
+            return;
+        }
+        Node last=lastParent();
+        if(last.left==null)
+        {
+            last.left=n;
+            n.parent=last;
+        }
+        else{
+            last.right=n;
+            n.parent=last;
+        }
+        upHeapify(n);
+    }
+    Node lastParent()
+    {
+        Queue<Node> q=new LinkedList<>();
+        q.add(root);
+        Node temp=root;
+        while(!q.isEmpty())
+        {
+            temp=q.peek();
+            q.remove();
+            if(temp.left!=null && temp.right!=null)
+            {
+                q.add(temp.left);
+                q.add(temp.right);
+            }
+            else{
+                break;
+            }
+        }
+        return temp;
+    }
+    void swap(Node x,Node y)
+    {
+       int l=x.data;
+        x.data=y.data;
+        y.data=l;
+           
+        
+    }
+    void upHeapify(Node temp)
+    {
+        if(temp.parent==null)
+        {
+            return;
+        }
+        if(temp.data>temp.parent.data)
+        {
+            swap(temp.parent,temp);
+            upHeapify(temp.parent);
+        }
+        
+    }
+    void print()
+    {
+        Node temp=root;
+        inorder(temp);
+    }
+    void inorder(Node he)
+    {
+        if(he==null)
+        {
+            return;
+        }
+        inorder(he.left);
+        System.out.print(he.data+" ");
+         inorder(he.right);
+    }
+    public static void main(String[] args)
+    {
+        Heap h=new Heap();
+        h.add(3);
+        h.add(5);
+        h.add(2);
+        h.add(10);
+        h.add(1);
+        h.add(4);
+        h.print();
+    }
+    }

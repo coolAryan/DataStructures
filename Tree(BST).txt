@@ -1,0 +1,163 @@
+class Tree{
+    Tree left;
+    Tree right;
+    int data;
+    Tree(int data)
+    {
+        this.data=data;
+        this.left=this.right=null;
+    }
+    
+}
+class BST{
+    Tree root;
+    BST()
+    {
+        this.root=null;
+    }
+    Tree insert(Tree root,int data)
+    {
+        Tree n=new Tree(data);
+        if(root==null)
+        {
+           return n;
+        }
+        if(root.data>data)
+        {
+            root.left=insert(root.left,data);
+        }
+        else if(root.data<data)
+        {
+            root.right=insert(root.right,data);
+        }
+        return root;
+    }
+    void add(int data)
+    {
+       // Tree n=new Tree(data);
+        root=insert(root,data);
+        // if(root==null)
+        // {
+        //     root=n;
+        //     return;
+        // }
+        // Tree prev=root;
+        // Tree temp=root;
+        // while(temp!=null)
+        // {
+        //     prev=temp;
+        //     if(temp.data>data)
+        //     {
+        //         temp=temp.left;
+        //     }
+        //     else if(temp.data<=data)
+        //     {
+        //         temp=temp.right;
+        //     }
+        // }
+        // if(prev.data>data)
+        // {
+        //     prev.left=n;
+        //     return;
+        // }
+        // else{
+        //     prev.right=n;
+        //     return;
+        // }
+    }
+    void inorder(Tree root)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data+" ");
+        inorder(root.right);
+    }
+    Tree inordersuc(Tree root)
+    {
+        while(root!=null && root.left!=null)
+        {
+            root=root.left;
+        }
+        return root;
+    }
+    Tree deleteBST(Tree root,int data)
+    {
+        if(root==null)
+        {
+            return root;
+        }
+        if(root.data>data)
+        {
+            root.left=deleteBST(root.left,data);
+        }
+        else if(root.data<data)
+        {
+            root.right=deleteBST(root.right,data);
+        }
+        else{
+            if(root.left==null)
+            {
+                Tree temp=root.right;
+                root=null;
+                return temp;
+            }
+            else if(root.right==null)
+            {
+              Tree temp=root.left;
+                root=null;
+                return temp;   
+            }
+            Tree suc=inordersuc(root.right);
+            root.data=suc.data;
+            root.right=deleteBST(root.right,suc.data);
+        }
+        return root;
+        
+        
+    }
+    void remove(int data)
+    {
+       root = deleteBST(root, data);
+    }
+    int height(Tree root)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+        int l=height(root.left);
+        int r=height(root.right);
+        int k=Math.max(l,r)+1;
+        return k;
+    }
+    void cal()
+    {
+        System.out.println(height(root));
+    }
+    
+    void print()
+    {
+        inorder(root);
+    }
+    
+    public static void main(String[] args)
+    {
+        BST b=new BST();
+        b.add(10);
+        b.add(5);
+        b.add(225);
+        b.add(100);
+        b.add(8);
+        b.add(20);
+        b.add(25);
+        b.add(30);
+     
+        b.remove(10);
+        b.remove(8);
+           b.cal();
+        b.print();
+    }
+}

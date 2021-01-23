@@ -1,0 +1,48 @@
+class Prc{
+    static void fun(int n)
+    {
+        if(n<1)
+        {
+            return;
+        }
+        
+        System.out.print(n+" ");
+        fun(n-1);
+    }
+  static  int fact(int num)
+    {
+        if(num<1)
+        {
+            return 1;
+        }
+        return num*fact(num-1);
+    }
+    static int fibo(int arr[],int num)
+    {
+        if(num<=2)
+        {
+            return 1;
+        }
+        if(arr[num]==0)
+        {
+            int k=fibo(arr,num-2)+fibo(arr,num-1);
+            arr[num]=k;
+            return k;
+        }
+        
+            return arr[num];
+        
+            
+    }
+     
+    public static void main(String args[])
+    {
+        fun(10);
+              System.out.println( "\n"+fact(10));
+        int arr[]=new int[10];
+        //Arrays.fill(arr,-1);
+       System.out.println(fibo(arr,9)+" ");
+
+        
+    }
+}

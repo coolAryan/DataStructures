@@ -1,0 +1,55 @@
+class Que{
+    Stack<Integer>s1=new Stack<Integer>();
+        Stack<Integer>s2=new Stack<Integer>();
+    void enQueue(int data){
+        while(!s1.empty())
+        {
+            int a=s1.peek();
+            s2.push(a);
+            s1.pop();
+        }
+        s1.push(data);
+        while(!s2.empty())
+        {
+            int a=s2.peek();
+           s1.push(a);           
+            s2.pop();
+        }
+    }
+    void deQueue()
+    {
+         if(s1.empty())
+        {
+            System.out.println("Nothing to delete");
+             return;
+        }
+        s1.pop();
+    }
+    void print()
+    {
+       // Stack<Integer> temp=s1;
+        while(!s1.empty())
+        {
+            System.out.print(s1.peek()+" ");
+            s1.pop();
+        }
+    }
+    public static void main(String[] args)
+    {
+        
+        Que q=new Que();
+        q.deQueue();
+        q.enQueue(10);
+        q.enQueue(20);
+        q.enQueue(30);
+        q.enQueue(40);
+   q.deQueue();
+        q.deQueue();
+          q.enQueue(60);
+        q.enQueue(70);
+        q.enQueue(80);
+    q.print();
+        
+        
+    }
+}

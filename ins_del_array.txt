@@ -1,0 +1,70 @@
+// "static void main" must be defined in a public class.
+import java.util.*;
+public class Main {
+     int addfront(int a[],int ptr,int t)
+        {
+            
+            for(int i=ptr+1;i>0;i--)
+            {
+                a[i]=a[i-1];
+            }
+            a[0]=t;
+            ptr++;
+            return ptr;
+        }
+    int deletefront(int a[],int ptr)
+    {
+        for(int i=0;i<ptr;i++ )
+        {
+            a[i]=a[i+1];
+        } 
+        ptr--;
+        return ptr;
+    }
+    int deleteatindex(int a[],int ptr,int index)
+    {
+        for(int i=ptr-1;i>index;i--)
+        {
+            a[i-1]=a[i];
+        }
+        ptr--;
+        return ptr;
+    }
+    int addatindex(int a[],int ptr,int t,int index)
+    {
+        for(int q=ptr+1;q>index;q--){
+            a[q]=a[q-1];
+        }
+        a[index]=t;
+        ptr++;
+        return ptr;
+    }
+    int addlast(int a[],int ptr,int t)
+    {    
+    a[ptr]=t;
+        ptr++;
+     return ptr;
+}
+        static void print(int a[],int ptr)
+        {
+            for(int j=0;j<ptr;j++)
+            {
+                System.out.print(a[j]+" ");
+            }
+        }
+    public static void main(String[] args) {
+       int a[]=new int[5];
+        int ptr=0;
+        Main obj =new Main();
+       ptr=obj.addfront(a, ptr,10);
+       ptr=obj.addfront(a,ptr,11);
+       ptr=obj.addfront(a,ptr,12);
+        ptr=obj.addatindex(a,ptr,18,1);
+        ptr=obj.deletefront(a,ptr);
+        ptr=obj.deletefront(a,ptr);
+        
+        print(a,ptr);
+    
+        
+}
+}

@@ -1,0 +1,58 @@
+// "static void main" must be defined in a public class.
+class Insert{
+    
+    class Node{
+        int data;
+        Node next;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    //Node head;
+    public  Node add(Node head,int data)
+    {
+        Node n=new Node(data);
+        n.next=head;
+        return n;
+    }
+    public  Node revh(Node head)
+    {
+        if(head==null)
+        {
+            return head;
+        }
+        Node rev=null;
+        Node curr=head;
+        while(curr!=null)
+        {
+            rev=add(rev,curr.data);
+            curr=curr.next;
+        }
+        return rev;
+    }
+     public void print(Node head)
+    {
+     Node curr=head;
+        while(curr!=null)
+        {
+            System.out.print(" "+curr.data);
+            curr=curr.next;
+        }
+    }
+     public static void main(String[] args) {    
+         Insert s=new Insert();
+         Node head=null;
+        head=s.add(head,0);
+         head=s.add(head,2);
+         head=s.add(head,4);
+         head=s.add(head,6);
+         s.print(head);
+        // System.out.
+         
+         Node rev=s.revh(head);
+         
+         s.print(rev);
+     }
+}

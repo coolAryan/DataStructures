@@ -1,0 +1,75 @@
+class Node{
+   int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+     this.data=data;
+     this.left=null;
+     this.right=null;
+    }
+static void level(Node root)
+{
+       Queue<Node>q=new LinkedList<>();
+        q.add(root);
+        Node temp=root;
+        while(!q.isEmpty())
+        {
+            temp=q.poll();
+            System.out.print(temp.data+" ");
+            if(temp.left!=null)
+            {
+                q.add(temp.left);
+            }
+            if(temp.right!=null)
+            {
+                q.add(temp.right);
+            }
+        }
+}
+    static void levelwise(Node root)
+{
+       Queue<Node>q=new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        Node temp=root;
+        while(!q.isEmpty())
+        {
+            temp=q.poll();
+            if(temp==null)
+            {
+                if(q.peek()!=null)
+                {
+                    System.out.println();
+                    q.add(null);
+                }
+            }
+            else
+            {
+                System.out.print(temp.data+" ");
+            if(temp.left!=null)
+            {
+                q.add(temp.left);
+            }
+            if(temp.right!=null)
+            {
+                q.add(temp.right);
+            }
+            }
+        }
+}
+    public static void main(String args[])
+    {
+        Node root=new Node(10);
+        root.left=new Node(20);
+        root.right=new Node(30);
+        root.left.left=new Node(40);
+        root.left.right=new Node(50);
+        root.right.left=new Node(60);
+        root.right.right=new Node(70);
+        root.left.right.left=new Node(80);  
+        level(root);
+        System.out.println("\n");
+        levelwise(root);
+    }
+}

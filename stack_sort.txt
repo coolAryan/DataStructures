@@ -1,0 +1,58 @@
+//import java.util.Stack;
+class Stac{
+   static void print(Stack<Integer> s)
+    {
+        while(!s.empty())
+        {
+            System.out.print(s.peek()+" ");
+            s.pop();
+        }
+    }
+   static void sort(Stack<Integer> s)
+    {
+        if(s.empty())
+        {
+            System.out.print("empty stack ");
+            return ;
+        }
+        Stack<Integer> temp=new Stack<Integer>();
+        int a=s.pop();
+        temp.push(a);
+        while(!s.empty())
+        {
+            int v=s.pop();
+            while(!temp.empty()&&v<temp.peek() )
+            {
+                s.push(temp.peek());
+                // System.out.print(temp.peek());
+                temp.pop();
+                 // System.out.print("a");
+            }
+            // System.out.print("a");
+            temp.push(v);
+            
+        }
+        
+        while(!temp.empty())
+        {
+            System.out.print(temp.peek()+" ");
+            temp.pop();
+        }
+    }
+    public static void main(String []args)
+    {
+        Stack<Integer>s=new Stack<Integer>();
+        s.push(18);
+        s.push(3);
+        s.push(5);
+        s.push(6);
+        s.push(7);
+         s.push(16);
+        s.push(2);
+        s.push(9);
+        s.push(13);
+        sort(s);
+         // print(s);
+        
+    }
+}

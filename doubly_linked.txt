@@ -1,0 +1,218 @@
+class Insert{
+
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+        
+    }
+    Node phead=null;
+     Node addfront(Node head,int data)
+     {
+         Node n=new Node(data);
+         n.prev=null;
+         if(head==null)
+         {
+             n.next=null;
+             phead=n;
+             return n;
+         }
+         n.next=head;
+         head.prev=n;
+         //head=n;
+         //return head;
+         return n;
+     }
+     void addNode(Node head, int pos, int data)
+	{
+	 Node n=new Node(data);
+        Node curr=head;
+        for(int i=0;i<pos;i++)
+        {
+           // System.out.println(curr.data+" ");
+            curr=curr.next;
+        }
+        n.next=curr.next;
+        if(curr!=null)
+        {
+            n.next.prev=n;
+        }
+        n.prev=curr;
+        curr.next=n;
+         while(head!=null)
+         {
+          System.out.println(head.data+" ");   
+             head=head.next;
+         }
+      
+	
+	}
+    Node addlast(Node head,int data)
+    {
+        Node n=new Node(data);
+        n.next=null;
+            if(head==null)
+            {
+                n.prev=null;
+                phead=n;
+                return n;
+            }
+            phead.next=n;
+            n.prev=phead;
+            phead=n;
+            return head;
+    //Node curr=head;
+      //  while(curr.next!=null)
+      //  {
+       //     curr=curr.next;
+        //}
+       // curr.next=n;
+       // n.prev=curr;
+       // return head;
+        }
+    Node addatpos(Node head,int pos,int data)
+    {
+        Node n=new Node(data);
+        if(pos==0)
+        {
+            n.next=head;
+            head.prev=n;
+            return n;
+        }
+        Node curr=head;
+     for(int i=1;i<pos;i++)
+     {
+         curr=curr.next;
+     }
+        n.next=curr.next;
+        curr.next=n;
+        n.next.prev=n;
+        n.prev=curr;
+        return head;
+    }
+    Node deletefront(Node head)
+    {
+        if(head.next==null)
+        {
+            head=null;
+            return head;
+        }
+        Node temp=head;
+        head=head.next;
+        temp=null;
+        head.prev=null;
+        return head;
+        
+    }
+    Node deletelast(Node head)
+    {
+        if(head.next==null)
+        {
+            head=null;
+            return head;
+        }
+        // Node temp=phead.prev;
+        //  phead=null;
+        // temp.next=null;
+        // phead=temp;
+        // return head;
+        phead=phead.prev;
+        phead.next=null;
+        return head;
+    }
+    Node rotateP (Node head, int p){
+        //Write your code here
+       Node curr=head;
+       Node phead=null;
+       while(curr!=null)
+       {
+           phead=curr;
+           curr=curr.next;
+       }
+       curr=head;
+       for(int i=0;i<p;i++)
+       {
+           Node temp=head;
+           head=head.next;
+           phead.next=temp;
+           temp.prev=phead;
+          
+           phead=temp;
+           phead.next=null;
+           
+       }
+       return head;
+    }
+    Node deleteatpos(Node head,int pos)
+    {
+        Node curr=head;
+        if(pos==0)
+        {
+            Node temp=head;
+            head=head.next;
+            temp=null;
+            head.prev=null;
+            //return head;
+        }
+        
+        else{
+            curr=head;
+        for(int i=1;i<pos;i++)
+        {
+            curr=curr.next;
+        }
+        Node temp=curr.next;
+        curr.next=temp.next;
+        temp.next.prev=curr;
+        }
+        return head;
+        
+    }
+    public void print(Node head)
+    {
+        Node curr=head;
+        Node last=curr;
+        while(curr!=null)
+        {
+            last=curr;
+            System.out.print(curr.data+" ");
+            curr=curr.next;
+        }
+        System.out.print("\nReverse\n");
+        while(last!=null)
+        {
+            
+            System.out.print(last.data+" ");
+            last=last.prev;
+        }
+    }
+        public static void main(String[] args)
+        {
+            Insert s=new Insert();
+            Node head=null;
+            head=s.addfront(head,2);
+            head=s.addfront(head,4);
+            head=s.addfront(head,6);
+            head=s.addfront(head,8);
+            head=s.addfront(head,10);
+            head=s.rotateP(head,2);
+            s.print(head);
+            
+           // s.print(head);
+     //       s.addNode(head,2,7);
+            //head=s.addfront(head,12);
+            // head=s.addlast(head,13);
+            // head=s.addatpos(head,2,9);
+            // head=s.addatpos(head,0,7);
+            //head=s.deletefront(head);
+            // head=s.deletelast(head);
+              //head=s.deleteatpos(head,5);
+            
+        }
+    }

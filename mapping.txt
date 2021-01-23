@@ -1,0 +1,44 @@
+class Graph{
+    Map<Integer,ArrayList<Integer>> h=new LinkedHashMap<>();
+    boolean bi=true;
+    void add(int st,int end,boolean bi)
+    {
+       // ArrayList<Integer>t=new ArrayList<Integer>();
+        if(!h.containsKey(st))
+        {
+        h.put(st,new ArrayList<Integer>(end));
+        }
+        if(!h.containsKey(end))
+        {
+            h.put(end,new ArrayList<Integer>(st));
+        }
+        h.get(st).add(end);
+        if(bi==true)
+        {
+            h.get(end).add(st);
+        }
+        
+    }
+    void print()
+    {
+        for (Map.Entry<Integer,ArrayList<Integer>> e : h.entrySet()) 
+        {
+            System.out.print(e.getKey() + "->");
+            for(int a:e.getValue())
+            {
+                 System.out.print(a+",");
+            }
+       System.out.println();
+        }
+    }
+    public static void main(String[] args)
+    {
+        Graph g=new Graph();
+        g.add(0,1,true);
+        g.add(2,1,true);
+        // g.add(2,3,true);
+        // g.add(4,1,true);
+        g.print();
+        
+    }
+}
